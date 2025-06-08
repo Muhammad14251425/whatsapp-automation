@@ -1,0 +1,209 @@
+{
+    "languages": [
+        "english",
+        "urdu"
+    ],
+    "steps": {
+        "start": {
+            "triggers": [
+                "hi",
+                "hello",
+                "salam",
+                "assalamualaikum",
+                "start"
+            ],
+            "message": "Please choose a language:\n- English\n- Urdu",
+            "nextStep": "language_selection",
+            "validation": {
+                "type": "language",
+                "errorMessage": "Sorry, I did not understand the language.\nPlease reply with: English or Urdu."
+            }
+        },
+        "language_selection": {
+            "storeAs": "language",
+            "setLanguage": "{{language}}",
+            "validation": {
+                "type": "language",
+                "errorMessage": "Sorry, I did not understand the language.\nPlease reply with: English or Urdu."
+            },
+            "conditions": [
+                {
+                    "type": "equals",
+                    "value": "english",
+                    "nextStep": "main_menu_english"
+                },
+                {
+                    "type": "equals",
+                    "value": "urdu",
+                    "nextStep": "main_menu_urdu"
+                }
+            ]
+        },
+        "main_menu_english": {
+            "triggers": [
+                "*",
+                "main menu",
+                "menu"
+            ],
+            "message": "Please reply with an option number from the below menu.\n\n1️⃣ 🏢 Donate at any of our Offices\n2️⃣ 🏦 Transfer funds to our Bank Accounts\n3️⃣ 📱 Baitussalam App / Website\n4️⃣ 🤝 Bykea\n5️⃣ 🤝 Kuickpay\n6️⃣ 🤝 TCS Express Centres\n7️⃣ 🤝 Mobile Wallets\n8️⃣ 🌎 Overseas Donors\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+            "nextStep": "menu_option_handler",
+            "validation": {
+                "type": "options",
+                "validOptions": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "b",
+                    "*"
+                ],
+                "errorMessage": "Sorry I did not understand that.\nPlease reply with option number from the menu."
+            }
+        },
+        "main_menu_urdu": {
+            "triggers": [
+                "*",
+                "main menu",
+                "menu"
+            ],
+            "message": "براہ کرم نیچے دیے گئے مینو سے کوئی آپشن نمبر کے ساتھ جواب دیں۔\n\n1️⃣ 🏢 ہمارے دفاتر میں سے کسی میں عطیہ دیں\n2️⃣ 🏦 ہمارے بینک اکاؤنٹس میں رقم ٹرانسفر کریں\n3️⃣ 📱 بیت السلام ایپ / ویب سائٹ\n4️⃣ 🤝 بائیکیا\n5️⃣ 🤝 کوِک پے\n6️⃣ 🤝 ٹی سی ایس ایکسپریس سینٹرز\n7️⃣ 🤝 موبائل والیٹس\n8️⃣ 🌎 بیرون ملک ڈونرز\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو",
+            "nextStep": "menu_option_handler",
+            "validation": {
+                "type": "options",
+                "validOptions": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "b",
+                    "*"
+                ],
+                "errorMessage": "معذرت، میں یہ سمجھ نہیں پایا۔\nبراہ کرم مینو سے آپشن نمبر کے ساتھ جواب دیں۔"
+            }
+        },
+        "menu_option_handler": {
+            "conditions": [
+                {
+                    "type": "equals",
+                    "value": "1",
+                    "nextStep": "office_donation"
+                },
+                {
+                    "type": "equals",
+                    "value": "2",
+                    "nextStep": "bank_transfer"
+                },
+                {
+                    "type": "equals",
+                    "value": "3",
+                    "nextStep": "app_website"
+                },
+                {
+                    "type": "equals",
+                    "value": "4",
+                    "nextStep": "bykea_steps"
+                },
+                {
+                    "type": "equals",
+                    "value": "5",
+                    "nextStep": "kuickpay_steps"
+                },
+                {
+                    "type": "equals",
+                    "value": "6",
+                    "nextStep": "tcs_steps"
+                },
+                {
+                    "type": "equals",
+                    "value": "7",
+                    "nextStep": "mobile_wallets"
+                },
+                {
+                    "type": "equals",
+                    "value": "8",
+                    "nextStep": "overseas_donors"
+                },
+                {
+                    "type": "equals",
+                    "value": "b",
+                    "nextStep": "language_selection"
+                },
+                {
+                    "type": "equals",
+                    "value": "*",
+                    "nextStep": "redirect_to_main_menu"
+                }
+            ]
+        },
+        "redirect_to_main_menu": {
+            "conditions": [
+                {
+                    "type": "language",
+                    "value": "english",
+                    "nextStep": "main_menu_english"
+                },
+                {
+                    "type": "language",
+                    "value": "urdu",
+                    "nextStep": "main_menu_urdu"
+                }
+            ]
+        },
+        "office_donation": {
+            "message": {
+                "english": "🏢 **Donate at our Offices**\n\nYou can visit any of our offices to make a donation:\n\n📍 **Main Office:**\nBaitussalam Welfare Trust\n123 Main Street, Karachi\n\n📍 **Branch Office:**\nBaitussalam Center\n456 Branch Road, Lahore\n\n⏰ **Timing:** 9:00 AM - 6:00 PM\n📞 **Contact:** +92-XXX-XXXXXXX\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                "urdu": "🏢 **ہمارے دفاتر میں عطیہ دیں**\n\nآپ عطیہ دینے کے لیے ہمارے کسی بھی دفتر میں تشریف لا سکتے ہیں:\n\n📍 **مرکزی دفتر:**\nبیت السلام ویلفیئر ٹرسٹ\n123 مین سٹریٹ، کراچی\n\n📍 **برانچ آفس:**\nبیت السلام سینٹر\n456 برانچ روڈ، لاہور\n\n⏰ **اوقات:** صبح 9:00 - شام 6:00\n📞 **رابطہ:** +92-XXX-XXXXXXX\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+            },
+            "nextStep": "menu_navigation"
+        },
+        "bank_transfer": {
+            "message": {
+                "english": "🏦 **Bank Transfer Details**\n\n**Account Name:** Baitussalam Welfare Trust\n**Bank:** Meezan Bank\n**Account Number:** 01234567890123\n**IBAN:** PK12MEZN0001234567890123\n\n**For Zakat:**\n**Account Number:** 09876543210987\n**IBAN:** PK34MEZN0009876543210987\n\n📧 Please send payment confirmation to: finance@baitussalam.org\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                "urdu": "🏦 **بینک ٹرانسفر کی تفصیلات**\n\n**اکاؤنٹ کا نام:** بیت السلام ویلفیئر ٹرسٹ\n**بینک:** میزان بینک\n**اکاؤنٹ نمبر:** 01234567890123\n**آئی بی اے این:** PK12MEZN0001234567890123\n\n**زکوٰۃ کے لیے:**\n**اکاؤنٹ نمبر:** 09876543210987\n**آئی بی اے این:** PK34MEZN0009876543210987\n\n📧 براہ کرم پیمنٹ کی تصدیق بھیجیں: finance@baitussalam.org\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+            },
+            "nextStep": "menu_navigation"
+        },
+        "app_website": {
+            "message": {
+                "english": "📱 **Baitussalam App & Website**\n\n**Download our App:**\n📱 Android: https://play.google.com/store/apps/baitussalam\n🍎 iOS: https://apps.apple.com/app/baitussalam\n\n**Visit our Website:**\n🌐 www.baitussalam.org\n\n**Features:**\n✅ Easy online donations\n✅ Track your contributions\n✅ Monthly donation setup\n✅ Tax exemption certificates\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                "urdu": "📱 **بیت السلام ایپ اور ویب سائٹ**\n\n**ہمارا ایپ ڈاؤن لوڈ کریں:**\n📱 اینڈرائیڈ: https://play.google.com/store/apps/baitussalam\n🍎 آئی او ایس: https://apps.apple.com/app/baitussalam\n\n**ہماری ویب سائٹ ملاحظہ کریں:**\n🌐 www.baitussalam.org\n\n**خصوصیات:**\n✅ آسان آن لائن عطیات\n✅ اپنے تعاون کو ٹریک کریں\n✅ ماہانہ عطیہ سیٹ اپ\n✅ ٹیکس چھوٹ کے سرٹیفکیٹ\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+            },
+            "nextStep": "menu_navigation"
+        },
+        "bykea_steps": {
+            "message": {
+                "english": "🤝 **BYKEA Donation Steps**\n\n1️⃣ Open BYKEA app on your mobile\n2️⃣ Tap on Cash Transfer\n3️⃣ Choose Paisay Bhejain\n4️⃣ Select Businesses from the header\n5️⃣ Tap on Baitussalam Welfare Trust\n6️⃣ Input the donation amount\n7️⃣ Select the payment method\n8️⃣ Provide your location\n9️⃣ Add details about your donation by clicking on +\n🔟 Review the charges and tap on Collect Cash From Me\n\n🚴‍♂️ A nearest bykea rider will come to your provided location.\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                "urdu": "🤝 **بائیکیا عطیہ کے اقدامات**\n\n1️⃣ اپنے موبائل پر بائیکیا ایپ کھولیں\n2️⃣ کیش ٹرانسفر پر ٹیپ کریں\n3️⃣ پیسے بھیجیں کا انتخاب کریں\n4️⃣ ہیڈر سے بزنسز کا انتخاب کریں\n5️⃣ بیت السلام ویلفیئر ٹرسٹ پر ٹیپ کریں\n6️⃣ عطیہ کی رقم داخل کریں\n7️⃣ ادائیگی کا طریقہ منتخب کریں\n8️⃣ اپنا مقام فراہم کریں\n9️⃣ + پر کلک کر کے اپنے عطیے کی تفصیلات شامل کریں\n🔟 چارجز کا جائزہ لیں اور مجھ سے کیش لیں پر ٹیپ کریں\n\n🚴‍♂️ قریبی بائیکیا رائیڈر آپ کے فراہم کردہ مقام پر آئے گا۔\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+            },
+            "nextStep": "menu_navigation"
+        },
+        "kuickpay_steps": {
+            "message": {
+                "english": "🤝 **KUICKPAY Donation Steps**\n\n1️⃣ Open KUICKPAY app\n2️⃣ Select 'Send Money'\n3️⃣ Choose 'Organizations'\n4️⃣ Search for 'Baitussalam Welfare Trust'\n5️⃣ Select our organization\n6️⃣ Enter donation amount\n7️⃣ Add purpose as 'Donation'\n8️⃣ Confirm and pay\n\n💳 Available payment methods:\n• Bank Transfer\n• Mobile Wallet\n• Credit/Debit Card\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                "urdu": "🤝 **کوِک پے عطیہ کے اقدامات**\n\n1️⃣ کوِک پے ایپ کھولیں\n2️⃣ 'پیسے بھیجیں' کا انتخاب کریں\n3️⃣ 'تنظیمات' کا انتخاب کریں\n4️⃣ 'بیت السلام ویلفیئر ٹرسٹ' تلاش کریں\n5️⃣ ہماری تنظیم کا انتخاب کریں\n6️⃣ عطیہ کی رقم داخل کریں\n7️⃣ مقصد کے طور پر 'عطیہ' شامل کریں\n8️⃣ تصدیق کرکے ادائیگی کریں\n\n💳 دستیاب ادائیگی کے طریقے:\n• بینک ٹرانسفر\n• موبائل والیٹ\n• کریڈٹ/ڈیبٹ کارڈ\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+            },
+            "nextStep": "menu_navigation"
+        },
+        "tcs_steps": {
+            "message": {
+                "english": "🤝 **TCS Express Centres**\n\n📍 Visit any TCS Express Centre nationwide\n\n**Recipient Details:**\n• Name: Baitussalam Welfare Trust\n• CNIC: 12345-1234567-1\n• Contact: +92-XXX-XXXXXXX\n\n**Process:**\n1️⃣ Fill TCS money transfer form\n2️⃣ Provide recipient details above\n3️⃣ Pay donation amount + service charges\n4️⃣ Keep receipt for your records\n\n📞 For queries: 111-123-456\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                "urdu": "🤝 **ٹی سی ایس ایکسپریس سینٹرز**\n\n📍 ملک بھر میں کسی بھی ٹی سی ایس ایکسپریس سینٹر جائیں\n\n**وصول کنندہ کی تفصیلات:**\n• نام: بیت السلام ویلفیئر ٹرسٹ\n• شناختی کارڈ: 12345-1234567-1\n• رابطہ: +92-XXX-XXXXXXX\n\n**عمل:**\n1️⃣ ٹی سی ایس منی ٹرانسفر فارم بھریں\n2️⃣ اوپر دی گئی وصول کنندہ کی تفصیلات فراہم کریں\n3️⃣ عطیہ کی رقم + سروس چارج ادا کریں\n4️⃣ اپنے ریکارڈ کے لیے رسید رکھیں\n\n📞 استفسارات کے لیے: 111-123-456\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+            },
+            "nextStep": "menu_navigation"
+        },
+        "mobile_wallets": {
+            "message": {
+                "english": "🤝 **Mobile Wallets**\n\n**JazzCash:**\n• Account: 03XX-XXXXXXX\n• Name: Baitussalam Welfare Trust\n\n**EasyPaisa:**\n• Account: 03XX-XXXXXXX\n• Name: Baitussalam Welfare Trust\n\n**HBL Konnect:**\n• Account: 03XX-XXXXXXX\n• Name: Baitussalam Welfare Trust\n\n📝 **Instructions:**\n1️⃣ Open your mobile wallet app\n2️⃣ Select 'Send Money'\n3️⃣ Enter above account number\n4️⃣ Add donation amount\n5️⃣ Complete transaction\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                "urdu": "🤝 **موبائل والیٹس**\n\n**جاز کیش:**\n• اکاؤنٹ: 03XX-XXXXXXX\n• نام: بیت السلام ویلفیئر ٹرسٹ\n\n**ایزی پیسہ:**\n• اکاؤنٹ: 03XX-XXXXXXX\n• نام: بیت السلام ویلفیئر ٹرسٹ\n\n**ایچ بی ایل کنیکٹ:**\n• اکاؤنٹ: 03XX-XXXXXXX\n• نام: بیت السلام ویلفیئر ٹرسٹ\n\n📝 **ہدایات:**\n1️⃣ اپنا موبائل والیٹ ایپ کھولیں\n2️⃣ 'پیسے بھیجیں' کا انتخاب کریں\n3️⃣ اوپر دیا گیا اکاؤنٹ نمبر داخل کریں\n4️⃣ عطی"
+            }
+        }
+    }
+}

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live CSV Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+        }
+
+        .status-indicator.error {
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+            box-shadow: 0 4px 15px rgba(245, 101, 101, 0.3);
+        }
+
+        .status-indicator.loading {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            box-shadow: 0 4px 15px rgba(237, 137, 54, 0.3);
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .refresh-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .refresh-btn {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .refresh-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .auto-refresh {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #cbd5e0;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(26px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-height: 70vh;
+            overflow-x: auto;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 600px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 1rem 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 2px solid #e2e8f0;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background-color 0.2s ease;
+            vertical-align: top;
+        }
+
+        tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #fafbfc;
+        }
+
+        .even-row td {
+            background-color: #f8fafc;
+        }
+
+        /* Styles for formatted JSON content */
+        .json-formatted {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin: 0.25rem 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .json-item {
+            background: white;
+            border-radius: 6px;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #3b82f6;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .json-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .json-field {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.25rem;
+        }
+
+        .json-field:last-child {
+            margin-bottom: 0;
+        }
+
+        .json-key {
+            font-weight: 600;
+            color: #1e40af;
+            text-transform: capitalize;
+        }
+
+        .json-value {
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .json-value.currency {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .json-value.quantity {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        /* Add visual indicators for different data types */
+        .json-indicator {
+            display: inline-block;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .csv-indicator {
+            display: inline-block;
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .last-updated {
+            text-align: center;
+            margin-top: 1rem;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            color: #c53030;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .refresh-controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>📊 Live Orders Dashboard</h1>
+            <p>Real-time CSV/JSON data viewer with automatic updates</p>
+        </div>
+
+        <div class="controls">
+            <div class="status-indicator" id="statusIndicator">
+                <div class="pulse"></div>
+                <span id="statusText">Ready</span>
+            </div>
+
+            <div class="refresh-controls">
+                <button class="refresh-btn" id="refreshBtn" onclick="loadCSV()">
+                    🔄 Refresh Now
+                </button>
+                
+                <div class="auto-refresh">
+                    <span>Auto-refresh:</span>
+                    <div class="toggle-switch" id="autoRefreshToggle" onclick="toggleAutoRefresh()"></div>
+                    <span id="refreshInterval">30s</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid" id="statsGrid" style="display: none;">
+            <div class="stat-card">
+                <div class="stat-number" id="totalRows">0</div>
+                <div class="stat-label">Total Rows</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalColumns">0</div>
+                <div class="stat-label">Columns</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="lastUpdateTime">--</div>
+                <div class="stat-label">Last Updated</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="csvTable">
+                <tr>
+                    <td style="text-align: center; padding: 3rem; color: #718096;">
+                        <div class="loading-spinner"></div>
+                        <br><br>Loading CSV data...
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="last-updated" id="lastUpdated"></div>
+    </div>
+
+    <script>
+        let autoRefreshInterval;
+        let isAutoRefreshEnabled = false;
+        let refreshIntervalSeconds = 30;
+
+        // CSV/JSON file URL - Updated to correct path
+        const CSV_URL = '../orders.csv'; // File can be CSV or JSON format
+
+        function updateStatus(status, type = 'success') {
+            const indicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            
+            indicator.className = `status-indicator ${type}`;
+            statusText.textContent = status;
+        }
+
+        function detectAndConvertJsonData(text) {
+            // Try to detect if the content is JSON data
+            const trimmedText = text.trim();
+            
+            // Check if it starts with [ or { (JSON array or object)
+            if ((trimmedText.startsWith('[') && trimmedText.endsWith(']')) || 
+                (trimmedText.startsWith('{') && trimmedText.endsWith('}'))) {
+                try {
+                    const jsonData = JSON.parse(trimmedText);
+                    
+                    // If it's an array of objects, return as is
+                    if (Array.isArray(jsonData) && jsonData.length > 0 && typeof jsonData[0] === 'object') {
+                        console.log('Detected JSON array data, converting to table format');
+                        updateStatus('📋 JSON data detected and converted', 'success');
+                        return jsonData;
+                    }
+                    
+                    // If it's a single object, wrap it in an array
+                    if (typeof jsonData === 'object' && !Array.isArray(jsonData)) {
+                        console.log('Detected JSON object data, converting to table format');
+                        updateStatus('📋 JSON object detected and converted', 'success');
+                        return [jsonData];
+                    }
+                } catch (e) {
+                    console.log('Not valid JSON data, treating as CSV');
+                }
+            }
+            
+            return null; // Not JSON data
+        }
+
+        function formatJsonInCell(jsonString) {
+            try {
+                // Try to parse the JSON string
+                const jsonData = JSON.parse(jsonString);
+                
+                // Check if it's an array of objects (like your sample data)
+                if (Array.isArray(jsonData) && jsonData.length > 0 && typeof jsonData[0] === 'object') {
+                    let formattedHtml = '<div class="json-formatted">';
+                    
+                    jsonData.forEach((item, index) => {
+                        formattedHtml += '<div class="json-item">';
+                        
+                        // Format each field in the object
+                        Object.keys(item).forEach(key => {
+                            const value = item[key];
+                            let formattedValue = value;
+                            let valueClass = 'json-value';
+                            
+                            // Format specific fields
+                            if (key.toLowerCase().includes('price') || key.toLowerCase().includes('total')) {
+                                formattedValue = '₨' + value.toLocaleString();
+                                valueClass += ' currency';
+                            } else if (key.toLowerCase().includes('quantity')) {
+                                formattedValue = value + ' units';
+                                valueClass += ' quantity';
+                            } else if (key.toLowerCase().includes('category')) {
+                                formattedValue = value.toString().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                            }
+                            
+                            formattedHtml += `
+                                <div class="json-field">
+                                    <span class="json-key">${key.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1').trim()}:</span>
+                                    <span class="${valueClass}">${formattedValue}</span>
+                                </div>
+                            `;
+                        });
+                        
+                        formattedHtml += '</div>';
+                    });
+                    
+                    formattedHtml += '</div>';
+                    return formattedHtml;
+                }
+                
+                // If it's a single object, format it
+                if (typeof jsonData === 'object' && !Array.isArray(jsonData)) {
+                    let formattedHtml = '<div class="json-formatted"><div class="json-item">';
+                    
+                    Object.keys(jsonData).forEach(key => {
+                        const value = jsonData[key];
+                        let formattedValue = value;
+                        let valueClass = 'json-value';
+                        
+                        // Format specific fields
+                        if (key.toLowerCase().includes('price') || key.toLowerCase().includes('total')) {
+                            formattedValue = '₨' + value.toLocaleString();
+                            valueClass += ' currency';
+                        } else if (key.toLowerCase().includes('quantity')) {
+                            formattedValue = value + ' units';
+                            valueClass += ' quantity';
+                        } else if (key.toLowerCase().includes('category')) {
+                            formattedValue = value.toString().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        }
+                        
+                        formattedHtml += `
+                            <div class="json-field">
+                                <span class="json-key">${key.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1').trim()}:</span>
+                                <span class="${valueClass}">${formattedValue}</span>
+                            </div>
+                        `;
+                    });
+                    
+                    formattedHtml += '</div></div>';
+                    return formattedHtml;
+                }
+                
+            } catch (e) {
+                // If parsing fails, return the original string
+                return jsonString;
+            }
+            
+            return jsonString;
+        }
+
+        function formatCellValue(value, header) {
+            // Format specific columns for better display
+            if (value === null || value === undefined) return '';
+            
+            const stringValue = value.toString().trim();
+            
+            // Check if the value looks like JSON (starts with [ or {)
+            if ((stringValue.startsWith('[') && stringValue.endsWith(']')) || 
+                (stringValue.startsWith('{') && stringValue.endsWith('}'))) {
+                return formatJsonInCell(stringValue);
+            }
+            
+            // Format currency values
+            if (header.toLowerCase().includes('price') || header.toLowerCase().includes('total')) {
+                if (typeof value === 'number') {
+                    return '₨' + value.toLocaleString();
+                }
+            }
+            
+            // Format quantity
+            if (header.toLowerCase().includes('quantity')) {
+                if (typeof value === 'number') {
+                    return value + ' units';
+                }
+            }
+            
+            // Capitalize category names
+            if (header.toLowerCase().includes('category')) {
+                return value.toString().charAt(0).toUpperCase() + value.toString().slice(1);
+            }
+            
+            return value.toString();
+        }
+
+        function updateStats(data) {
+            if (!data || data.length === 0) return;
+
+            document.getElementById('totalRows').textContent = data.length;
+            document.getElementById('totalColumns').textContent = Object.keys(data[0]).length;
+            document.getElementById('lastUpdateTime').textContent = new Date().toLocaleTimeString();
+            document.getElementById('statsGrid').style.display = 'grid';
+        }
+
+        function renderTable(data) {
+            const table = document.getElementById('csvTable');
+            
+            if (!data || data.length === 0) {
+                table.innerHTML = '<tr><td style="text-align: center; padding: 3rem; color: #718096;">No data available</td></tr>';
+                return;
+            }
+
+            let html = '<tr>';
+            const headers = Object.keys(data[0]);
+            headers.forEach(header => {
+                // Make headers more readable
+                const displayHeader = header.replace(/([A-Z])/g, ' $1')
+                                          .replace(/^./, str => str.toUpperCase())
+                                          .trim();
+                html += `<th>${displayHeader}</th>`;
+            });
+            html += '</tr>';
+
+            data.forEach((row, index) => {
+                html += `<tr ${index % 2 === 0 ? 'class="even-row"' : ''}>`;
+                headers.forEach(header => {
+                    const value = row[header];
+                    const formattedValue = formatCellValue(value, header);
+                    html += `<td>${formattedValue}</td>`;
+                });
+                html += '</tr>';
+            });
+
+            table.innerHTML = html;
+            updateStats(data);
+        }
+
+        async function loadCSV() {
+            const refreshBtn = document.getElementById('refreshBtn');
+            refreshBtn.disabled = true;
+            refreshBtn.innerHTML = '<div class="loading-spinner"></div> Loading...';
+            
+            updateStatus('Loading...', 'loading');
+
+            try {
+                const response = await fetch(CSV_URL + '?t=' + Date.now()); // Add timestamp to prevent caching
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const csvText = await response.text();
+
+                // First, try to detect if it's JSON data
+                const jsonData = detectAndConvertJsonData(csvText);
+                
+                if (jsonData) {
+                    // Handle JSON data directly
+                    renderTable(jsonData);
+                    updateStatus(`✅ Loaded ${jsonData.length} JSON records`, 'success');
+                    
+                    const now = new Date();
+                    document.getElementById('lastUpdated').textContent = 
+                        `Last updated: ${now.toLocaleString()} (JSON format)`;
+                } else {
+                    // Handle CSV data with Papa Parse
+                    Papa.parse(csvText, {
+                        header: true,
+                        skipEmptyLines: true,
+                        dynamicTyping: true,
+                        complete: function(results) {
+                            if (results.errors.length > 0) {
+                                console.warn('CSV parsing warnings:', results.errors);
+                            }
+                            
+                            renderTable(results.data);
+                            updateStatus(`✅ Loaded ${results.data.length} CSV records`, 'success');
+                            
+                            const now = new Date();
+                            document.getElementById('lastUpdated').textContent = 
+                                `Last updated: ${now.toLocaleString()} (CSV format)`;
+                        },
+                        error: function(error) {
+                            throw new Error('CSV parsing failed: ' + error.message);
+                        }
+                    });
+                }
+
+            } catch (error) {
+                console.error('Error loading CSV:', error);
+                updateStatus('❌ Failed to load data', 'error');
+                
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.textContent = `Error: ${error.message}. Make sure the orders.csv file is accessible.`;
+                
+                const existingError = document.querySelector('.error-message');
+                if (existingError) {
+                    existingError.remove();
+                }
+                
+                document.querySelector('.table-container').before(errorDiv);
+                
+                setTimeout(() => errorDiv.remove(), 10000);
+            } finally {
+                refreshBtn.disabled = false;
+                refreshBtn.innerHTML = '🔄 Refresh Now';
+            }
+        }
+
+        function toggleAutoRefresh() {
+            const toggle = document.getElementById('autoRefreshToggle');
+            isAutoRefreshEnabled = !isAutoRefreshEnabled;
+            
+            if (isAutoRefreshEnabled) {
+                toggle.classList.add('active');
+                startAutoRefresh();
+                updateStatus('🔄 Auto-refresh ON', 'success');
+            } else {
+                toggle.classList.remove('active');
+                stopAutoRefresh();
+                updateStatus('⏸️ Auto-refresh OFF', 'success');
+            }
+        }
+
+        function startAutoRefresh() {
+            stopAutoRefresh(); // Clear any existing interval
+            autoRefreshInterval = setInterval(loadCSV, refreshIntervalSeconds * 1000);
+        }
+
+        function stopAutoRefresh() {
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+                autoRefreshInterval = null;
+            }
+        }
+
+        // Load CSV when page loads
+        window.addEventListener('load', loadCSV);
+
+        // Handle page visibility changes (pause auto-refresh when tab is hidden)
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden && isAutoRefreshEnabled) {
+                stopAutoRefresh();
+            } else if (!document.hidden && isAutoRefreshEnabled) {
+                startAutoRefresh();
+                loadCSV(); // Refresh immediately when tab becomes visible
+            }
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', stopAutoRefresh);
+    </script>
+
+
+</body>
+
+</html>

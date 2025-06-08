@@ -1,0 +1,245 @@
+{
+    "navigation": {
+        "backKeywords": [
+            "b",
+            "🅱",
+            "back",
+            "previous"
+        ],
+        "mainMenuKeywords": [
+            "*",
+            "*️⃣",
+            "main",
+            "menu",
+            "home"
+        ],
+        "mainMenuStep": "main_menu",
+        "backText": {
+            "english": "🔙 Going back to previous menu...",
+            "urdu": "🔙 پچھلے مینو پر واپس جا رہے ہیں..."
+        },
+        "mainMenuText": {
+            "english": "🏠 Going to main menu...",
+            "urdu": "🏠 مین مینو پر جا رہے ہیں..."
+        }
+    },
+    "steps": {
+        "start": {
+            "type": "text",
+            "message": "Please choose a language:\n- English\n- Urdu",
+            "triggers": [
+                {
+                    "type": "contains",
+                    "values": [
+                        "hi",
+                        "hello",
+                        "salam",
+                        "assalamualaikum",
+                        "start"
+                    ],
+                    "nextStep": "language_selection"
+                }
+            ],
+            "errorMessage": "Please say 'hi' or 'hello' to start the conversation."
+        },
+        "language_selection": {
+            "type": "text",
+            "message": "Please choose a language:\n- English\n- Urdu",
+            "triggers": [
+                {
+                    "type": "exact",
+                    "values": [
+                        "english",
+                        "English"
+                    ],
+                    "setLanguage": "english",
+                    "nextStep": "main_menu"
+                },
+                {
+                    "type": "exact",
+                    "values": [
+                        "urdu",
+                        "Urdu"
+                    ],
+                    "setLanguage": "urdu",
+                    "nextStep": "main_menu"
+                }
+            ],
+            "errorMessage": "Sorry, I did not understand the language.\nPlease reply with: English or Urdu.",
+            "resendOnError": true
+        },
+        "main_menu": {
+            "messages": [
+                {
+                    "type": "text",
+                    "message": {
+                        "english": "Welcome to Baitussalam Welfare Trust! 🏠",
+                        "urdu": "بیت السلام ویلفیئر ٹرسٹ میں خوش آمدید! 🏠"
+                    },
+                    "delay": 500
+                },
+                {
+                    "type": "media",
+                    "mediaUrl": "https://media.istockphoto.com/id/873338508/video/open-pantone-sample-colors-catalogue.mp4?s=mp4-640x640-is&k=20&c=zFXxSrARgKSP8C33nOdU6SEQ-R15-tdbvu5ow1g8Trw=",
+                    "caption": {
+                        "english": "Watch our introduction video",
+                        "urdu": "ہماری تعارفی ویڈیو دیکھیں"
+                    },
+                    "delay": 1000
+                },
+                {
+                    "type": "text",
+                    "message": {
+                        "english": "Please reply with an option number from the below menu.\n\n1️⃣ 🏢 Donate at any of our Offices\n2️⃣ 🏦 Transfer funds to our Bank Accounts\n3️⃣ 📱 Baitussalam App / Website\n4️⃣ 🤝 Bykea\n5️⃣ 🤝 Kuickpay\n6️⃣ 🤝 TCS Express Centres\n7️⃣ 🤝 Mobile Wallets\n8️⃣ 🌎 Overseas Donors\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                        "urdu": "براہ کرم نیچے دیے گئے مینو سے ایک آپشن نمبر کے ساتھ جواب دیں۔\n\n1️⃣ 🏢 ہمارے کسی بھی دفتر میں عطیہ کریں\n2️⃣ 🏦 ہمارے بینک اکاؤنٹس میں رقم منتقل کریں\n3️⃣ 📱 بیت السلام ایپ / ویب سائٹ\n4️⃣ 🤝 بائیکیا\n5️⃣ 🤝 کوئیک پے\n6️⃣ 🤝 TCS ایکسپریس سنٹرز\n7️⃣ 🤝 موبائل والیٹس\n8️⃣ 🌎 بیرون ملک ڈونرز\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+                    }
+                }
+            ],
+            "triggers": [
+                {
+                    "type": "option",
+                    "values": [
+                        "1"
+                    ],
+                    "nextStep": "office_donation"
+                },
+                {
+                    "type": "option",
+                    "values": [
+                        "2"
+                    ],
+                    "nextStep": "bank_transfer"
+                },
+                {
+                    "type": "option",
+                    "values": [
+                        "3"
+                    ],
+                    "nextStep": "app_website"
+                },
+                {
+                    "type": "option",
+                    "values": [
+                        "4"
+                    ],
+                    "nextStep": "bykea_steps"
+                },
+                {
+                    "type": "option",
+                    "values": [
+                        "5"
+                    ],
+                    "nextStep": "kuickpay_steps"
+                },
+                {
+                    "type": "option",
+                    "values": [
+                        "6"
+                    ],
+                    "nextStep": "tcs_steps"
+                },
+                {
+                    "type": "option",
+                    "values": [
+                        "7"
+                    ],
+                    "nextStep": "mobile_wallets"
+                },
+                {
+                    "type": "option",
+                    "values": [
+                        "8"
+                    ],
+                    "nextStep": "overseas_donors"
+                },
+                {
+                    "type": "option",
+                    "values": [
+                        "0"
+                    ],
+                    "action": "enable_human_chat"
+                }
+            ],
+            "errorMessage": {
+                "english": "Sorry I did not understand that.\nPlease reply with option number (1-8).",
+                "urdu": "معذرت، میں یہ نہیں سمجھا۔\nبراہ کرم آپشن نمبر (1-8) کے ساتھ جواب دیں۔"
+            },
+            "resendOnError": true,
+            "backStep": "language_selection"
+        },
+        "bykea_steps": {
+            "messages": [
+                {
+                    "type": "text",
+                    "message": {
+                        "english": "Great choice! Let me guide you through the Bykea donation process. 🚴‍♂️",
+                        "urdu": "بہترین انتخاب! میں آپ کو بائیکیا عطیہ کے عمل کے ذریعے رہنمائی کرتا ہوں۔ 🚴‍♂️"
+                    }
+                },
+                {
+                    "type": "media",
+                    "mediaUrl": "https://cdn.pixabay.com/video/2022/06/29/122490-725502862_large.mp4",
+                    "caption": {
+                        "english": "Watch this tutorial video for step-by-step guidance",
+                        "urdu": "قدم بہ قدم رہنمائی کے لیے یہ ٹیوٹوریل ویڈیو دیکھیں"
+                    },
+                    "delay": 1000
+                },
+                {
+                    "type": "audio",
+                    "mediaUrl": "https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/pause.wav",
+                    "caption": {
+                        "english": "Audio instructions in your preferred language",
+                        "urdu": "آپ کی پسندیدہ زبان میں آڈیو ہدایات"
+                    },
+                    "delay": 2000
+                },
+                {
+                    "type": "text",
+                    "message": {
+                        "english": "BYKEA DONATION STEPS:\n\n1. Open BYKEA app on your mobile\n2. Tap on Cash Transfer\n3. Choose Paisay Bhejain\n4. Select Businesses from the header\n5. Tap on Baitussalam Welfare Trust\n6. Input the donation amount\n7. Select the payment method\n8. Provide your location\n9. Add details about your donation by clicking on +\n10. Review the charges and tap on Collect Cash From Me\n\nA nearest bykea would come to your provided location.\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                        "urdu": "بائیکیا عطیہ کے اقدامات:\n\n1. اپنے موبائل پر BYKEA ایپ کھولیں\n2. Cash Transfer پر ٹیپ کریں\n3. پیسے بھیجیں کا انتخاب کریں\n4. ہیڈر سے Businesses کا انتخاب کریں\n5. بیت السلام ویلفیئر ٹرسٹ پر ٹیپ کریں\n6. عطیہ کی رقم داخل کریں\n7. ادائیگی کا طریقہ منتخب کریں\n8. اپنا مقام فراہم کریں\n9. + پر کلک کر کے اپنے عطیے کی تفصیلات شامل کریں\n10. چارجز کا جائزہ لیں اور مجھ سے نقد جمع کریں پر ٹیپ کریں\n\nقریب ترین بائیکیا آپ کے فراہم کردہ مقام پر آئے گا۔\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+                    },
+                    "delay": 1000
+                }
+            ],
+            "triggers": [],
+            "backStep": "main_menu"
+        },
+        "office_donation": {
+            "messages": [
+                {
+                    "type": "text",
+                    "message": {
+                        "english": "Thank you for choosing to visit our offices! 🏢",
+                        "urdu": "ہمارے دفاتر میں آنے کا انتخاب کرنے کے لیے شکریہ! 🏢"
+                    }
+                },
+                {
+                    "type": "document",
+                    "filePath": "/path/to/office-locations.pdf",
+                    "delay": 500
+                },
+                {
+                    "type": "text",
+                    "message": {
+                        "english": "🏢 OFFICE DONATIONS\n\nYou can visit any of our offices during working hours:\n\n📍 Main Office: Karachi\n📍 Branch Office: Lahore\n📍 Branch Office: Islamabad\n\nWorking Hours: 9:00 AM - 6:00 PM (Mon-Sat)\n\nFor exact addresses, please call: +92-XXX-XXXXXXX\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                        "urdu": "🏢 دفتری عطیات\n\nآپ کام کے اوقات میں ہمارے کسی بھی دفتر میں جا سکتے ہیں:\n\n📍 مرکزی دفتر: کراچی\n📍 برانچ آفس: لاہور\n📍 برانچ آفس: اسلام آباد\n\nکام کے اوقات: صبح 9:00 بجے - شام 6:00 بجے (پیر سے ہفتہ)\n\nصحیح پتوں کے لیے کال کریں: +92-XXX-XXXXXXX\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+                    },
+                    "delay": 1000
+                }
+            ],
+            "triggers": [],
+            "backStep": "main_menu"
+        },
+        "bank_transfer": {
+            "type": "text",
+            "message": {
+                "english": "🏦 BANK TRANSFER\n\nYou can transfer funds to our bank accounts:\n\n🔸 Account 1:\nBank: ABC Bank\nAccount: 1234567890\nTitle: Baitussalam Welfare Trust\n\n🔸 Account 2:\nBank: XYZ Bank\nAccount: 0987654321\nTitle: Baitussalam Welfare Trust\n\nPlease share transaction receipt via WhatsApp after transfer.\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+                "urdu": "🏦 بینک ٹرانسفر\n\nآپ ہمارے بینک اکاؤنٹس میں رقم منتقل کر سکتے ہیں:\n\n🔸 اکاؤنٹ 1:\nبینک: ABC بینک\nاکاؤنٹ: 1234567890\nٹائٹل: بیت السلام ویلفیئر ٹرسٹ\n\n🔸 اکاؤنٹ 2:\nبینک: XYZ بینک\nاکاؤنٹ: 0987654321\nٹائٹل: بیت السلام ویلفیئر ٹرسٹ\n\nبراہ کرم ٹرانسفر کے بعد واٹس ایپ کے ذریعے ٹرانزیکشن رسید شیئر کریں۔\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+            },
+            "triggers": [],
+            "backStep": "main_menu"
+        }
+    }
+}

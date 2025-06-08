@@ -1,0 +1,194 @@
+{
+  "navigation": {
+    "backKeywords": ["b", "🅱", "back", "previous"],
+    "mainMenuKeywords": ["*", "*️⃣", "main", "menu", "home"],
+    "mainMenuStep": "main_menu",
+    "backText": {
+      "english": "🔙 Going back to previous menu...",
+      "urdu": "🔙 پچھلے مینو پر واپس جا رہے ہیں..."
+    },
+    "mainMenuText": {
+      "english": "🏠 Going to main menu...",
+      "urdu": "🏠 مین مینو پر جا رہے ہیں..."
+    }
+  },
+  "steps": {
+    "start": {
+      "type": "text",
+      "message": "Please choose a language:\n- English\n- Urdu",
+      "triggers": [
+        {
+          "type": "contains",
+          "values": ["hi", "hello", "salam", "assalamualaikum", "start"],
+          "nextStep": "language_selection"
+        }
+      ],
+      "errorMessage": "Please say 'hi' or 'hello' to start the conversation."
+    },
+    "language_selection": {
+      "type": "text",
+      "message": "Please choose a language:\n- English\n- Urdu",
+      "triggers": [
+        {
+          "type": "exact",
+          "values": ["english", "English"],
+          "setLanguage": "english",
+          "nextStep": "main_menu"
+        },
+        {
+          "type": "exact",
+          "values": ["urdu", "Urdu"],
+          "setLanguage": "urdu",
+          "nextStep": "main_menu"
+        }
+      ],
+      "errorMessage": "Sorry, I did not understand the language.\nPlease reply with: English or Urdu.",
+      "resendOnError": true
+    },
+    "main_menu": {
+      "type": "text",
+      "message": {
+        "english": "Please reply with an option number from the below menu.\n\n1️⃣ 🏢 Donate at any of our Offices\n2️⃣ 🏦 Transfer funds to our Bank Accounts\n3️⃣ 📱 Baitussalam App / Website\n4️⃣ 🤝 Bykea\n5️⃣ 🤝 Kuickpay\n6️⃣ 🤝 TCS Express Centres\n7️⃣ 🤝 Mobile Wallets\n8️⃣ 🌎 Overseas Donors\n0️⃣ 👤 Talk to Human Support\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+        "urdu": "براہ کرم نیچے دیے گئے مینو سے ایک آپشن نمبر کے ساتھ جواب دیں۔\n\n1️⃣ 🏢 ہمارے کسی بھی دفتر میں عطیہ کریں\n2️⃣ 🏦 ہمارے بینک اکاؤنٹس میں رقم منتقل کریں\n3️⃣ 📱 بیت السلام ایپ / ویب سائٹ\n4️⃣ 🤝 بائیکیا\n5️⃣ 🤝 کوئیک پے\n6️⃣ 🤝 TCS ایکسپریس سنٹرز\n7️⃣ 🤝 موبائل والیٹس\n8️⃣ 🌎 بیرون ملک ڈونرز\n0️⃣ 👤 انسانی سپورٹ سے بات کریں\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+      },
+      "triggers": [
+        {
+          "type": "option",
+          "values": ["1"],
+          "nextStep": "office_donation"
+        },
+        {
+          "type": "option",
+          "values": ["2"],
+          "nextStep": "bank_transfer"
+        },
+        {
+          "type": "option",
+          "values": ["3"],
+          "nextStep": "app_website"
+        },
+        {
+          "type": "option",
+          "values": ["4"],
+          "nextStep": "bykea_steps"
+        },
+        {
+          "type": "option",
+          "values": ["5"],
+          "nextStep": "kuickpay_steps"
+        },
+        {
+          "type": "option",
+          "values": ["6"],
+          "nextStep": "tcs_steps"
+        },
+        {
+          "type": "option",
+          "values": ["7"],
+          "nextStep": "mobile_wallets"
+        },
+        {
+          "type": "option",
+          "values": ["8"],
+          "nextStep": "overseas_donors"
+        },
+        {
+          "type": "option",
+          "values": ["0"],
+          "action": "enable_human_chat"
+        }
+      ],
+      "errorMessage": {
+        "english": "Sorry I did not understand that.\nPlease reply with option number (0-8).",
+        "urdu": "معذرت، میں یہ نہیں سمجھا۔\nبراہ کرم آپشن نمبر (0-8) کے ساتھ جواب دیں۔"
+      },
+      "resendOnError": true,
+      "backStep": "language_selection",
+      "isMainMenu": true
+    },
+    "bykea_steps": {
+      "type": "text",
+      "message": {
+        "english": "BYKEA\n\n1. Open BYKEA app on your mobile\n2. Tap on Cash Transfer\n3. Choose Paisay Bhejain\n4. Select Businesses from the header\n5. Tap on Baitussalam Welfare Trust\n6. Input the donation amount\n7. Select the payment method\n8. Provide your location\n9. Add details about your donation by clicking on +\n10. Review the charges and tap on Collect Cash From Me\n\nA nearest bykea would come to your provided location.\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+        "urdu": "بائیکیا\n\n1. اپنے موبائل پر BYKEA ایپ کھولیں\n2. Cash Transfer پر ٹیپ کریں\n3. پیسے بھیجیں کا انتخاب کریں\n4. ہیڈر سے Businesses کا انتخاب کریں\n5. بیت السلام ویلفیئر ٹرسٹ پر ٹیپ کریں\n6. عطیہ کی رقم داخل کریں\n7. ادائیگی کا طریقہ منتخب کریں\n8. اپنا مقام فراہم کریں\n9. + پر کلک کر کے اپنے عطیے کی تفصیلات شامل کریں\n10. چارجز کا جائزہ لیں اور مجھ سے نقد جمع کریں پر ٹیپ کریں\n\nقریب ترین بائیکیا آپ کے فراہم کردہ مقام پر آئے گا۔\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+      },
+      "triggers": [
+        {
+          "type": "option",
+          "values": ["1"],
+          "nextStep": "office_donation"
+        },
+        {
+          "type": "option",
+          "values": ["2"],
+          "nextStep": "bank_transfer"
+        }
+      ],
+      "backStep": "main_menu"
+    },
+    "office_donation": {
+      "type": "text",
+      "message": {
+        "english": "🏢 OFFICE DONATIONS\n\nYou can visit any of our offices during working hours:\n\n📍 Main Office: Karachi\n📍 Branch Office: Lahore\n📍 Branch Office: Islamabad\n\nWorking Hours: 9:00 AM - 6:00 PM (Mon-Sat)\n\nFor exact addresses, please call: +92-XXX-XXXXXXX\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+        "urdu": "🏢 دفتری عطیات\n\nآپ کام کے اوقات میں ہمارے کسی بھی دفتر میں جا سکتے ہیں:\n\n📍 مرکزی دفتر: کراچی\n📍 برانچ آفس: لاہور\n📍 برانچ آفس: اسلام آباد\n\nکام کے اوقات: صبح 9:00 بجے - شام 6:00 بجے (پیر سے ہفتہ)\n\nصحیح پتوں کے لیے کال کریں: +92-XXX-XXXXXXX\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+      },
+      "triggers": [],
+      "backStep": "main_menu",
+      "errorMessage": "aby yrrr kya ker raihy ho"
+    },
+    "bank_transfer": {
+      "type": "text",
+      "message": {
+        "english": "🏦 BANK TRANSFER\n\nYou can transfer funds to our bank accounts:\n\n🔸 Account 1:\nBank: ABC Bank\nAccount: 1234567890\nTitle: Baitussalam Welfare Trust\n\n🔸 Account 2:\nBank: XYZ Bank\nAccount: 0987654321\nTitle: Baitussalam Welfare Trust\n\nPlease share transaction receipt via WhatsApp after transfer.\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+        "urdu": "🏦 بینک ٹرانسفر\n\nآپ ہمارے بینک اکاؤنٹس میں رقم منتقل کر سکتے ہیں:\n\n🔸 اکاؤنٹ 1:\nبینک: ABC بینک\nاکاؤنٹ: 1234567890\nٹائٹل: بیت السلام ویلفیئر ٹرسٹ\n\n🔸 اکاؤنٹ 2:\nبینک: XYZ بینک\nاکاؤنٹ: 0987654321\nٹائٹل: بیت السلام ویلفیئر ٹرسٹ\n\nبراہ کرم ٹرانسفر کے بعد واٹس ایپ کے ذریعے ٹرانزیکشن رسید شیئر کریں۔\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+      },
+      "triggers": [],
+      "backStep": "main_menu"
+    },
+    "app_website": {
+      "type": "text",
+      "message": {
+        "english": "📱 BAITUSSALAM APP / WEBSITE\n\n🔗 Website: www.baitussalam.org\n📱 Android App: Download from Google Play Store\n🍎 iOS App: Download from App Store\n\nSearch for 'Baitussalam Welfare Trust' in the app stores.\n\nFeatures:\n✅ Easy donation process\n✅ Multiple payment options\n✅ Donation history\n✅ Impact reports\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+        "urdu": "📱 بیت السلام ایپ / ویب سائٹ\n\n🔗 ویب سائٹ: www.baitussalam.org\n📱 اینڈرائیڈ ایپ: گوگل پلے اسٹور سے ڈاؤن لوڈ کریں\n🍎 iOS ایپ: ایپ اسٹور سے ڈاؤن لوڈ کریں\n\nایپ اسٹورز میں 'بیت السلام ویلفیئر ٹرسٹ' تلاش کریں۔\n\nخصوصیات:\n✅ آسان عطیہ کا عمل\n✅ متعدد ادائیگی کے اختیارات\n✅ عطیات کی تاریخ\n✅ اثرات کی رپورٹس\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+      },
+      "triggers": [],
+      "backStep": "main_menu"
+    },
+    "kuickpay_steps": {
+      "type": "text",
+      "message": {
+        "english": "🤝 KUICKPAY\n\n1. Open KuickPay app on your mobile\n2. Select 'Bill Payment' or 'Donations'\n3. Find 'Baitussalam Welfare Trust'\n4. Enter donation amount\n5. Select payment method\n6. Complete the transaction\n7. Save receipt for your records\n\nFor assistance, contact KuickPay support.\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+        "urdu": "🤝 کوئیک پے\n\n1. اپنے موبائل پر KuickPay ایپ کھولیں\n2. 'بل پیمنٹ' یا 'ڈونیشنز' کا انتخاب کریں\n3. 'بیت السلام ویلفیئر ٹرسٹ' تلاش کریں\n4. عطیہ کی رقم داخل کریں\n5. ادائیگی کا طریقہ منتخب کریں\n6. لین دین مکمل کریں\n7. اپنے ریکارڈ کے لیے رسید محفوظ کریں\n\nمدد کے لیے، KuickPay سپورٹ سے رابطہ کریں۔\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+      },
+      "triggers": [],
+      "backStep": "main_menu"
+    },
+    "tcs_steps": {
+      "type": "text",
+      "message": {
+        "english": "🤝 TCS EXPRESS CENTRES\n\n1. Visit any TCS Express Centre\n2. Tell them you want to make a donation\n3. Provide organization name: 'Baitussalam Welfare Trust'\n4. Provide our TCS account details\n5. Fill donation form\n6. Pay the amount + service charges\n7. Keep receipt for your records\n\nTCS Account: [Contact us for details]\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+        "urdu": "🤝 TCS ایکسپریس سنٹرز\n\n1. کسی بھی TCS ایکسپریس سنٹر پر جائیں\n2. انہیں بتائیں کہ آپ عطیہ دینا چاہتے ہیں\n3. تنظیم کا نام دیں: 'بیت السلام ویلفیئر ٹرسٹ'\n4. ہمارے TCS اکاؤنٹ کی تفصیلات فراہم کریں\n5. عطیہ کا فارم بھریں\n6. رقم + سروس چارجز ادا کریں\n7. اپنے ریکارڈ کے لیے رسید رکھیں\n\nTCS اکاؤنٹ: [تفصیلات کے لیے ہم سے رابطہ کریں]\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+      },
+      "triggers": [],
+      "backStep": "main_menu"
+    },
+    "mobile_wallets": {
+      "type": "text",
+      "message": {
+        "english": "🤝 MOBILE WALLETS\n\nYou can donate through various mobile wallets:\n\n💳 JazzCash: 03XX-XXXXXXX\n💳 Easypaisa: 03XX-XXXXXXX\n💳 SadaPay: 03XX-XXXXXXX\n💳 Nayapay: 03XX-XXXXXXX\n\nSteps:\n1. Open your wallet app\n2. Select 'Send Money' or 'Transfer'\n3. Enter our wallet number\n4. Enter amount\n5. Complete transaction\n6. Share screenshot with us\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+        "urdu": "🤝 موبائل والیٹس\n\nآپ مختلف موبائل والیٹس کے ذریعے عطیہ کر سکتے ہیں:\n\n💳 JazzCash: 03XX-XXXXXXX\n💳 Easypaisa: 03XX-XXXXXXX\n💳 SadaPay: 03XX-XXXXXXX\n💳 Nayapay: 03XX-XXXXXXX\n\nاقدامات:\n1. اپنا والیٹ ایپ کھولیں\n2. 'پیسے بھیجیں' یا 'ٹرانسفر' کا انتخاب کریں\n3. ہمارا والیٹ نمبر داخل کریں\n4. رقم داخل کریں\n5. لین دین مکمل کریں\n6. ہمارے ساتھ اسکرین شاٹ شیئر کریں\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+      },
+      "triggers": [],
+      "backStep": "main_menu"
+    },
+    "overseas_donors": {
+      "type": "text",
+      "message": {
+        "english": "🌎 OVERSEAS DONORS\n\nFor international donations:\n\n🏦 Bank Transfer:\nIBAN: PK36XXXXXXXXXXXXXXXXXXXX\nSWIFT: XXXXXXXXX\nBank: ABC Bank Limited\nAccount Title: Baitussalam Welfare Trust\n\n💳 Online Platforms:\n- PayPal: donations@baitussalam.org\n- Wise (TransferWise)\n- Western Union\n- MoneyGram\n\nFor assistance, email: international@baitussalam.org\n\n🅱 🔙Previous Menu\n*️⃣ Main Menu",
+        "urdu": "🌎 بیرون ملک ڈونرز\n\nبین الاقوامی عطیات کے لیے:\n\n🏦 بینک ٹرانسفر:\nIBAN: PK36XXXXXXXXXXXXXXXXXXXX\nSWIFT: XXXXXXXXX\nبینک: ABC بینک لمیٹڈ\nاکاؤنٹ ٹائٹل: بیت السلام ویلفیئر ٹرسٹ\n\n💳 آن لائن پلیٹ فارمز:\n- PayPal: donations@baitussalam.org\n- Wise (TransferWise)\n- Western Union\n- MoneyGram\n\nمدد کے لیے، ای میل: international@baitussalam.org\n\n🅱 🔙پچھلا مینو\n*️⃣ مین مینو"
+      },
+      "triggers": [],
+      "backStep": "main_menu"
+    }
+  }
+}
