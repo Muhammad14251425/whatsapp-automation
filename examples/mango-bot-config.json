@@ -43,7 +43,7 @@
             },
             {
                 "type": "video",
-                "content": "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
+                "content": "https://cdn-cf-east.streamable.com/video/mp4/6prs0u.mp4?Expires=1749849208541&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ&Signature=QcxCqJDIUEEY5oVkvnWCAuywm-3j-VnhEEjDtD-8Oyisdm4OsHMse4hQvuwXuARUIo8tbgzccMEPyVnpMyZ8wQnScl7ICQLGYV4dwfJbCu7LYq34YA8QOZSDDl2BIz1cLTechLr3AxPnhGGp0CuWd28UlZl3VIF7XUHY4HZ5Hn2wJG~elGF1694yuBMjE9A3xb58G2msFJj~AhH61oLWwP2sq8PC9gCHnu8QnyoS1WhFc3TIkgpsaEUtJJZN5-Id24h4uFyI9Ic8lJpqKm40ezw~6nv0yg1rSRVtQG4RrREOLvISrF0fZaUSjOvqj4IvW9aohMdx6dwNR00~E7pkoQ__",
                 "caption": "See how we carefully pack your mangoes!",
                 "delay": 0
             },
@@ -97,9 +97,9 @@
         },
         "sindhri": {
             "name": "Sindhri",
-            "pricePerCrate": 2200,
+            "pricePerCrate": 3000,
             "images": [
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Sindhri_Mango.JPG/1280px-Sindhri_Mango.JPG",
+                "https://cdn-cf-east.streamable.com/video/mp4/6prs0u.mp4?Expires=1749849208541&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ&Signature=QcxCqJDIUEEY5oVkvnWCAuywm-3j-VnhEEjDtD-8Oyisdm4OsHMse4hQvuwXuARUIo8tbgzccMEPyVnpMyZ8wQnScl7ICQLGYV4dwfJbCu7LYq34YA8QOZSDDl2BIz1cLTechLr3AxPnhGGp0CuWd28UlZl3VIF7XUHY4HZ5Hn2wJG~elGF1694yuBMjE9A3xb58G2msFJj~AhH61oLWwP2sq8PC9gCHnu8QnyoS1WhFc3TIkgpsaEUtJJZN5-Id24h4uFyI9Ic8lJpqKm40ezw~6nv0yg1rSRVtQG4RrREOLvISrF0fZaUSjOvqj4IvW9aohMdx6dwNR00~E7pkoQ__",
                 "https://www.globalmartpk.com/cdn/shop/files/SINDHRI-MANGO-1-KG-Pre-Order-SF-Traders-5519.jpg?v=1703184589&width=1445",
                 "https://gardendelightfoodstuff.com/wp-content/uploads/2024/07/17mango-sindhri-box.jpg"
             ],
@@ -107,32 +107,67 @@
         },
         "anwar_ratol": {
             "name": "Anwar Ratol",
-            "pricePerCrate": 2800,
+            "pricePerCrate": 3500,
             "images": [
                 "https://thefarmette.pk/cdn/shop/files/AnwarRatol_2_623x527.jpg?v=1685528669",
                 "https://i.pinimg.com/736x/46/34/e7/4634e72e5cc6eed4e76f286482cc0d61.jpg",
-                "https://www.mangonation.pk/wp-content/uploads/2019/08/Mangonation.pk-%E2%80%93-Export-Quality-Mango-Delivery-Service-Pakistan-anwar-ratol-no-12-600x600.jpg"
+                "https://static-01.daraz.pk/p/c1d393895351a22919db5a22e1f6e449.jpg"
             ],
             "quality": "Exquisite Anwar Ratol mangoes, considered the king of mangoes. Exceptionally sweet with a unique flavor profile."
         },
         "langra": {
             "name": "Langra",
-            "pricePerCrate": 2300,
+            "pricePerCrate": 2500,
             "images": [
                 "https://www.multanimango.pk/wp-content/uploads/2021/05/LAngra.jpg",
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbQQQ5D1MNEb9xpFu1dGALeAgixvL1JRCnAg&s",
-                "https://kj1bcdn.b-cdn.net/media/72399/61epzjibi5l_sl1280_.jpg"
+                "https://5.imimg.com/data5/KM/OL/MY-45352276/langra-mango.jpg"
             ],
             "quality": "Traditional Langra mangoes with unique taste and texture. A favorite among mango connoisseurs."
         },
         "dussehri": {
             "name": "Dussehri",
-            "pricePerCrate": 2400,
+            "pricePerCrate": 2500,
             "images": [
-                "https://5.imimg.com/data5/SELLER/Default/2022/3/GM/UU/EK/17197643/dusseri-mango-500x500.jpeg",
-                "https://bsmedia.business-standard.com/_media/bs/img/article/2017-05/05/full/1493968178-113.jpg",
+                "https://mangoeshyderabad.com/wp-content/uploads/2022/02/dasheri-hyd-1.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNlun4UGMiI1u09SHRHZyVdfWoann8RCAnUg&s",
                 "https://www.multanimango.pk/wp-content/uploads/2021/04/langra-mango.jpg"
             ],
+            "quality": "Sweet and aromatic Dussehri mangoes, known for their small size and intense flavor."
+        },
+        "gulab_khasa": {
+            "name": "Gulab Khasa",
+            "pricePerCrate": 2500,
+            "images": [
+                "https://rukminim2.flixcart.com/image/850/1000/xif0q/shopsy-plant-sapling/x/i/s/perennial-yes-yes-gulab-khaas-mango-plant-1-heaven-of-saplings-original-imahyjx44esbh3uh.jpeg?q=20&crop=false",
+                "https://i.redd.it/this-gulab-khas-mango-would-score-10-goals-against-any-v0-m7mpis0olv1f1.jpg?width=4320&format=pjpg&auto=webp&s=c944cab0ab5407e37cbe155bb028bda7cc121163"
+            ],
+            "quality": "Sweet and aromatic Dussehri mangoes, known for their small size and intense flavor."
+        },
+        "saroli ": {
+            "name": "Saroli",
+            "pricePerCrate": 2500,
+            "images": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLEoWV3MJWdDffJv3jX67sNl0GcJgyKkV_tA&s",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxrx-ikREpa-k8NBG-MMnr2sWfgZLlvokM4w&s"
+            ],
+            "quality": "Sweet and aromatic Dussehri mangoes, known for their small size and intense flavor."
+        },
+        "banganapalli": {
+            "name": "Banganapalli",
+            "pricePerCrate": 2500,
+            "images": [
+                "https://purehairnskin.com/storage/blog/MfNmY6cFdz7VuW9qTWAGRjNmxOj1WMSlv03WAauA.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWbw-Zrvfz2ZwBC-tQCIAA9XRewGvXz7vpJg&s"
+            ],
+            "quality": "Sweet and aromatic Dussehri mangoes, known for their small size and intense flavor."
+        },
+        "zafran": {
+            "name": "Zafran",
+            "pricePerCrate": 3000,
+            "images": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgpG6vED1Lu_rEvxDYq1fRuqh04bCGd1UAAg&s",
+                "https://i.ytimg.com/vi/M6BLabsy1_Q/sddefault.jpg"            ],
             "quality": "Sweet and aromatic Dussehri mangoes, known for their small size and intense flavor."
         }
     },
@@ -157,13 +192,12 @@
         },
         "language_selection": {
             "type": "text",
-            "message": "Please choose a language:\n- English\n- Urdu",
+            "message": "Please choose a language:\n1️⃣ English\n2️⃣ Urdu",
             "triggers": [
                 {
                     "type": "exact",
                     "values": [
-                        "english",
-                        "English"
+                        "1"
                     ],
                     "setLanguage": "english",
                     "nextStep": "welcome_messages"
@@ -171,8 +205,7 @@
                 {
                     "type": "exact",
                     "values": [
-                        "urdu",
-                        "Urdu"
+                        "2"
                     ],
                     "setLanguage": "urdu",
                     "nextStep": "welcome_messages"
@@ -370,8 +403,8 @@
         "bank_payment": {
             "type": "text",
             "message": {
-                "english": "🏦 **Bank Details**\n\n💳 **Account 1:**\nBank: HBL Bank\nAccount: 12345678901234\nTitle: Mango Paradise\nIBAN: PK36HABB0012345678901234\n\n💳 **Account 2:**\nBank: UBL Bank\nAccount: 56789012345678\nTitle: Mango Paradise\nIBAN: PK47UNIL0056789012345678\n\n💰 **Amount to Pay: Rs. {{totalAmount}}**\n\nPlease share transaction screenshot after payment.\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
-                "urdu": "🏦 **بینک تفصیلات**\n\n💳 **اکاؤنٹ 1:**\nبینک: HBL بینک\nاکاؤنٹ: 12345678901234\nٹائٹل: مینگو پیراڈائز\nIBAN: PK36HABB0012345678901234\n\n💳 **اکاؤنٹ 2:**\nبینک: UBL بینک\nاکاؤنٹ: 56789012345678\nٹائٹل: مینگو پیراڈائز\nIBAN: PK47UNIL0056789012345678\n\n💰 **ادائیگی کی رقم: {{totalAmount}} روپے**\n\nادائیگی کے بعد ٹرانزیکشن کا اسکرین شاٹ شیئر کریں۔\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
+                "english": "🏦 **Bank Details**\n\n💳 **Account 1:**\nBank: HBL Bank\nAccount: 55140115000270019\nTitle: Ahmed ali Munwar ali\nIBAN: PK93BAHL5514011500027001\n\n💰 **Amount to Pay: Rs. {{totalAmount}}**\n\nPlease share transaction screenshot after payment.\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
+                "urdu": "🏦 **بینک تفصیلات**\n\n💳 **اکاؤنٹ 1:**\nبینک: HBL بینک\nاکاؤنٹ: 55140115000270019\n Ahmed ali Munwar ali ٹائٹل\nIBAN: PK93BAHL5514011500027001\n\n💰 **ادائیگی کی رقم: {{totalAmount}} روپے**\n\nادائیگی کے بعد ٹرانزیکشن کا اسکرین شاٹ شیئر کریں۔\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
             },
             "triggers": [],
             "nextStep": "awaiting_payment_screenshot",
@@ -380,8 +413,8 @@
         "mobile_payment": {
             "type": "text",
             "message": {
-                "english": "📱 **Mobile Payment Options**\n\n💰 **Easypaisa:**\nAccount: 03001234567\nName: Mango Paradise\n\n💰 **JazzCash:**\nAccount: 03009876543\nName: Mango Paradise\n\n💰 **SadaPay:**\nAccount: 03005555555\nName: Mango Paradise\n\n💰 **Amount to Pay: Rs. {{totalAmount}}**\n\nPlease share transaction screenshot after payment.\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
-                "urdu": "📱 **موبائل پیمنٹ آپشنز**\n\n💰 **ایزی پیسہ:**\nاکاؤنٹ: 03001234567\nنام: مینگو پیراڈائز\n\n💰 **جاز کیش:**\nاکاؤنٹ: 03009876543\nنام: مینگو پیراڈائز\n\n💰 **صدا پے:**\nاکاؤنٹ: 03005555555\nنام: مینگو پیراڈائز\n\n💰 **ادائیگی کی رقم: {{totalAmount}} روپے**\n\nادائیگی کے بعد ٹرانزیکشن کا اسکرین شاٹ شیئر کریں۔\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
+                "english": "📱 **Mobile Payment Options**\n\n💰 **Easypaisa:**\nAccount: 03112246528\nName: Ahmed Ali\n\n **Amount to Pay: Rs. {{totalAmount}}**\n\nPlease share transaction screenshot after payment.\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
+                "urdu": "📱 **موبائل پیمنٹ آپشنز**\n\n💰 **ایزی پیسہ:**\nاکاؤنٹ: 03112246528\n Ahmed Ali  :نام \n\n **ادائیگی کی رقم: {{totalAmount}} روپے**\n\nادائیگی کے بعد ٹرانزیکشن کا اسکرین شاٹ شیئر کریں۔\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
             },
             "triggers": [],
             "nextStep": "awaiting_payment_screenshot",
@@ -424,8 +457,8 @@
         "view_sizes": {
             "type": "text",
             "message": {
-                "english": "📏 **Mango Crate Sizes**\n\n🧺 Standard Crate:\n• Weight: 10-12 kg\n• Quantity: 40-50 mangoes\n• Dimensions: 60cm x 40cm x 20cm\n\n🥭 Premium Crate:\n• Weight: 8-10 kg\n• Quantity: 30-35 large mangoes\n• Dimensions: 60cm x 40cm x 20cm\n\nAll crates are carefully packed with protective material.\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
-                "urdu": "📏 **آم کے کریٹ کے سائز**\n\n🧺 معیاری کریٹ:\n• وزن: 10-12 کلو\n• تعداد: 40-50 آم\n• ابعاد: 60cm x 40cm x 20cm\n\n🥭 پریمیم کریٹ:\n• وزن: 8-10 کلو\n• تعداد: 30-35 بڑے آم\n• ابعاد: 60cm x 40cm x 20cm\n\nتمام کریٹس کو محفوظ مواد کے ساتھ احتیاط سے پیک کیا جاتا ہے۔\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
+                "english": "📏 **Mango Crate Sizes**\n\n🧺 Standard Crate:\n• Weight: 9+ kg\n• Quantity: 15-20 mangoes\n• Dimensions: 60cm x 40cm x 20cm\n\nAll crates are carefully packed with protective material.\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
+                "urdu": "📏 **آم کے کریٹ کے سائز**\n\n🧺 معیاری کریٹ:\n• وزن: 9+ کلو\n• تعداد: 15-20 آم\n• ابعاد: 60cm x 40cm x 20cm\n\nتمام کریٹس کو محفوظ مواد کے ساتھ احتیاط سے پیک کیا جاتا ہے۔\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
             },
             "triggers": [],
             "backStep": "main_menu"
@@ -437,13 +470,17 @@
                 "urdu": "🧺 **آم کی اقسام دیکھیں**\n\nتمام دستیاب آم کی اقسام اور ان کی تفصیلات یہاں کنفیگریشن سے خودکار طور پر دکھائی جائیں گی۔\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
             },
             "triggers": [],
-            "backStep": "main_menu"
+            "backStep": "main_menu",
+            "errorMessage": {
+                "english": "Sorry I did not understand that.\nPlease reply with option number (0-8).",
+                "urdu": "معذرت، میں یہ نہیں سمجھا۔\nبراہ کرم آپشن نمبر (0-8) کے ساتھ جواب دیں۔"
+            }
         },
         "bank_details": {
             "type": "text",
             "message": {
-                "english": "🏦 **Bank Details**\n\n💳 **Account 1:**\nBank: HBL Bank\nAccount: 12345678901234\nTitle: Mango Paradise\nIBAN: PK36HABB0012345678901234\n\n💳 **Account 2:**\nBank: UBL Bank\nAccount: 56789012345678\nTitle: Mango Paradise\nIBAN: PK47UNIL0056789012345678\n\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
-                "urdu": "🏦 **بینک تفصیلات**\n\n💳 **اکاؤنٹ 1:**\nبینک: HBL بینک\nاکاؤنٹ: 12345678901234\nٹائٹل: مینگو پیراڈائز\nIBAN: PK36HABB0012345678901234\n\n💳 **اکاؤنٹ 2:**\nبینک: UBL بینک\nاکاؤنٹ: 56789012345678\nٹائٹل: مینگو پیراڈائز\nIBAN: PK47UNIL0056789012345678\n\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
+                "english": "🏦 **Bank Details**\n\n💳 **Account 1:**\nBank: HBL Bank\nAccount: 55140115000270019\nTitle: Ahmed ali Munwar ali\nIBAN: PK93BAHL5514011500027001\n\n\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
+                "urdu": "🏦 **بینک تفصیلات**\n\n💳 **اکاؤنٹ 1:**\nبینک: HBL بینک\nاکاؤنٹ: 55140115000270019\n Ahmed ali Munwar ali ٹائٹل\nIBAN: PK93BAHL5514011500027001\n\n\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
             },
             "triggers": [],
             "backStep": "main_menu"
@@ -451,8 +488,8 @@
         "mobile_payments": {
             "type": "text",
             "message": {
-                "english": "📱 **Mobile Payment Options**\n\n💰 **Easypaisa:**\nAccount: 03001234567\nName: Mango Paradise\n\n💰 **JazzCash:**\nAccount: 03009876543\nName: Mango Paradise\n\n💰 **SadaPay:**\nAccount: 03005555555\nName: Mango Paradise\n\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
-                "urdu": "📱 **موبائل پیمنٹ آپشنز**\n\n💰 **ایزی پیسہ:**\nاکاؤنٹ: 03001234567\nنام: مینگو پیراڈائز\n\n💰 **جاز کیش:**\nاکاؤنٹ: 03009876543\nنام: مینگو پیراڈائز\n\n💰 **صدا پے:**\nاکاؤنٹ: 03005555555\nنام: مینگو پیراڈائز\n\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
+                "english": "📱 **Mobile Payment Options**\n\n💰 **Easypaisa:**\nAccount: 03112246528\nName: Ahmed Ali\n\n \n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
+                "urdu": "📱 **موبائل پیمنٹ آپشنز**\n\n💰 **ایزی پیسہ:**\nاکاؤنٹ: 03112246528\n Ahmed Ali  :نام \n\n \n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
             },
             "triggers": [],
             "backStep": "main_menu"
@@ -460,8 +497,8 @@
         "help_faqs": {
             "type": "text",
             "message": {
-                "english": "❓ **Help / FAQs**\n\n**Q: How long does delivery take?**\nA: 2-3 business days within city, 3-5 days outside city.\n\n**Q: Do you deliver nationwide?**\nA: Yes, we deliver all over Pakistan.\n\n**Q: What if mangoes are damaged?**\nA: We provide 100% replacement guarantee.\n\n**Q: Can I cancel my order?**\nA: Yes, within 2 hours of placing order.\n\n**Q: Do you provide bulk discounts?**\nA: Yes, 5% discount on orders above 10 crates.\n\n**Q: Can I order multiple varieties?**\nA: Yes! You can add multiple mango varieties to your cart in a single order.\n\n📞 **Contact:** 03001234567\n📧 **Email:** info@mangoparadise.com\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
-                "urdu": "❓ **مدد / سوالات**\n\n**س: ڈیلیوری میں کتنا وقت لگتا ہے؟**\nج: شہر کے اندر 2-3 کاروباری دن، شہر سے باہر 3-5 دن۔\n\n**س: کیا آپ ملک بھر میں ڈیلیوری کرتے ہیں؟**\nج: جی ہاں، ہم پورے پاکستان میں ڈیلیوری کرتے ہیں۔\n\n**س: اگر آم خراب ہوں تو کیا ہوگا؟**\nج: ہم 100% تبدیلی کی گارنٹی فراہم کرتے ہیں۔\n\n**س: کیا میں اپنا آرڈر منسوخ کر سکتا ہوں؟**\nج: جی ہاں، آرڈر دینے کے 2 گھنٹے کے اندر۔\n\n**س: کیا آپ بلک ڈسکاؤنٹ دیتے ہیں؟**\nج: جی ہاں، 10 کریٹ سے زیادہ آرڈر پر 5% ڈسکاؤنٹ۔\n\n**س: کیا میں مختلف اقسام کے آم آرڈر کر سکتا ہوں؟**\nج: جی ہاں! آپ ایک ہی آرڈر میں مختلف قسم کے آم اپنے کارٹ میں شامل کر سکتے ہیں۔\n\n📞 **رابطہ:** 03001234567\n📧 **ای میل:** info@mangoparadise.com\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
+                "english": "❓ **Help / FAQs**\n\n**Q: How long does delivery take?**\nA: 2-3 business days within city, 3-5 days outside city.\n\n**Q: Do you deliver nationwide?**\nA: Yes, we deliver all over Pakistan.\n\n**Q: What if mangoes are damaged?**\nA: We provide 100% replacement guarantee.\n\n**Q: Can I cancel my order?**\nA: Yes, within 2 hours of placing order.\n\n**Q: Do you provide bulk discounts?**\nA: Yes, 5% discount on orders above 10 crates.\n\n**Q: Can I order multiple varieties?**\nA: Yes! You can add multiple mango varieties to your cart in a single order.\n\n📞 **Contact:** 03112246528\n📧 \n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
+                "urdu": "❓ **مدد / سوالات**\n\n**س: ڈیلیوری میں کتنا وقت لگتا ہے؟**\nج: شہر کے اندر 2-3 کاروباری دن، شہر سے باہر 3-5 دن۔\n\n**س: کیا آپ ملک بھر میں ڈیلیوری کرتے ہیں؟**\nج: جی ہاں، ہم پورے پاکستان میں ڈیلیوری کرتے ہیں۔\n\n**س: اگر آم خراب ہوں تو کیا ہوگا؟**\nج: ہم 100% تبدیلی کی گارنٹی فراہم کرتے ہیں۔\n\n**س: کیا میں اپنا آرڈر منسوخ کر سکتا ہوں؟**\nج: جی ہاں، آرڈر دینے کے 2 گھنٹے کے اندر۔\n\n**س: کیا آپ بلک ڈسکاؤنٹ دیتے ہیں؟**\nج: جی ہاں، 10 کریٹ سے زیادہ آرڈر پر 5% ڈسکاؤنٹ۔\n\n**س: کیا میں مختلف اقسام کے آم آرڈر کر سکتا ہوں؟**\nج: جی ہاں! آپ ایک ہی آرڈر میں مختلف قسم کے آم اپنے کارٹ میں شامل کر سکتے ہیں۔\n\n📞 **رابطہ:** 03112246528\n📧 **ای میل:** info@mangoparadise.com\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
             },
             "triggers": [],
             "backStep": "main_menu"
@@ -469,8 +506,8 @@
         "about_us": {
             "type": "text",
             "message": {
-                "english": "ℹ️ **About Mango Paradise**\n\n🥭 We are Pakistan's premium mango supplier, serving fresh and quality mangoes since 2010.\n\n🌟 **Our Mission:**\nTo deliver the finest Pakistani mangoes to your doorstep with guaranteed freshness and quality.\n\n🏆 **Why Choose Us:**\n• Direct from farms\n• Quality guaranteed\n• Nationwide delivery\n• Competitive prices\n• 24/7 customer support\n• Multiple varieties in one order\n• Shopping cart functionality\n\n📍 **Location:** Multan, Punjab\n📞 **Contact:** 03001234567\n🌐 **Website:** www.mangoparadise.com\n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
-                "urdu": "ℹ️ **مینگو پیراڈائز کے بارے میں**\n\n🥭 ہم پاکستان کے پریمیم آم سپلائر ہیں، 2010 سے تازہ اور معیاری آم فراہم کر رہے ہیں۔\n\n🌟 **ہمارا مشن:**\nبہترین پاکستانی آم کو تازگی اور معیار کی گارنٹی کے ساتھ آپ کے گھر تک پہنچانا۔\n\n🏆 **ہمیں کیوں چنیں:**\n• براہ راست کھیتوں سے\n• معیار کی گارنٹی\n• ملک بھر میں ڈیلیوری\n• مسابقتی قیمتیں\n• 24/7 کسٹمر سپورٹ\n• ایک آرڈر میں متعدد اقسام\n• شاپنگ کارٹ کی سہولت\n\n📍 **مقام:** ملتان، پنجاب\n📞 **رابطہ:** 03001234567\n🌐 **ویب سائٹ:** www.mangoparadise.com\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
+                "english": "ℹ️ **About Mango Paradise**\n\n🥭 We are Pakistan's premium mango supplier, serving fresh and quality mangoes since 2010.\n\n🌟 **Our Mission:**\nTo deliver the finest Pakistani mangoes to your doorstep with guaranteed freshness and quality.\n\n🏆 **Why Choose Us:**\n• Direct from farms\n• Quality guaranteed\n• Nationwide delivery\n• Competitive prices\n\n📞 **Contact:** 03112246528\n🌐 \n\n🅱 🔙 Previous Menu\n*️⃣ Main Menu",
+                "urdu": "ℹ️ **مینگو پیراڈائز کے بارے میں**\n\n🥭 ہم پاکستان کے پریمیم آم سپلائر ہیں، 2010 سے تازہ اور معیاری آم فراہم کر رہے ہیں۔\n\n🌟 **ہمارا مشن:**\nبہترین پاکستانی آم کو تازگی اور معیار کی گارنٹی کے ساتھ آپ کے گھر تک پہنچانا۔\n\n🏆 **ہمیں کیوں چنیں:**\n• براہ راست کھیتوں سے\n• معیار کی گارنٹی\n• ملک بھر میں ڈیلیوری\n• مسابقتی قیمتیں\n\n📞 **رابطہ:** 03112246528\n\n\n🅱 🔙 پچھلا مینو\n*️⃣ مین مینو"
             },
             "triggers": [],
             "backStep": "main_menu"
